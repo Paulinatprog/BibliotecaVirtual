@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: Arial, sans-serif;
+        }
+
+        #library {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 1200px;
+        }
+
+        .shelf {
+            width: 30%;
+            margin: 10px;
+            padding: 10px;
+            border: 2px solid #9c9c9c;
+            border-radius: 10px;
+            box-shadow: 5px 5px 5px #888888;
+        }
+
+        .book {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid #b4b2a9;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px #888888;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .book:hover {
+            transform: scale(1.1);
+        }
+
+        #bookInfo {
+            display: none;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .button {
+            background-color: #4CAF50; 
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="library">
+        <div class="shelf" id="shelf1">
+            <div class="book" onclick="showBookInfo('El Origen de las Especies', 'Charles Darwin', 'La obra maestra de Charles Darwin que presenta su teoria de la evolucion por seleccion natural.', 'https://books.google.com.mx/books/about/El_origen_de_las_especies.html?id=8bGPDwAAQBAJ&printsec=frontcover&source=kp_read_button&hl=es-419&newbks=1&newbks_redir=0&gboemv=1&redir_esc=y#v=onepage&q&f=false')">El Origen de las Especies</div>
+            <div class="book" onclick="showBookInfo('Planta Sapiens', 'Juan Luis Arsuaga', 'Un analisis cientifico y cultural sobre el origen de la humanidad y su relacion con las plantas.', 'https://books.google.com.mx/books/about/Planta_sapiens.html?id=4MzGEAAAQBAJ&printsec=frontcover&source=kp_read_button&hl=es-419&newbks=1&newbks_redir=0&gboemv=1&redir_esc=y#v=onepage&q&f=false')">Planta Sapiens</div>
+            <div class="book" onclick="showBookInfo('La Especie Elegida', 'Juan Luis Arsuaga', 'Una exploracion fascinante de la evolucion humana y su lugar en el mundo natural.', 'https://books.google.com.mx/books/about/La_especie_elegida.html?id=cfpRAgAAQBAJ&printsec=frontcover&source=kp_read_button&hl=es-419&newbks=1&newbks_redir=0&gboemv=1&redir_esc=y#v=onepage&q&f=false')">La Especie Elegida</div>
+        </div>
+        <div class="shelf" id="shelf2">
+            <div class="book" onclick="showBookInfo('Cronobiologia', 'Jurgen Aschoff', 'Un analisis exhaustivo sobre los ritmos biologicos y su impacto en la salud y el bienestar.', 'https://books.google.com.mx/books/about/Cronobiologia.html?id=cbmGEAAAQBAJ&printsec=frontcover&source=kp_read_button&hl=es-419&newbks=1&newbks_redir=0&gboemv=1&redir_esc=y#v=onepage&q&f=false')">Cronobiologia</div>
+            <div class="book" onclick="showBookInfo('Celula', 'Geoffrey M. Cooper', 'Una exploracion completa de la biologia celular y sus implicaciones en la vida y la medicina moderna.', 'https://books.google.com.mx/books?id=jsYiEAAAQBAJ&printsec=frontcover&dq=Celula&hl=es-419&newbks=1&newbks_redir=0&source=gb_mobile_search&sa=X&redir_esc=y#v=onepage&q=Celula&f=false')">Celula</div>
+            <div class="book" onclick="showBookInfo('La Celula', 'Geoffrey M. Cooper', 'Una guia esencial sobre la biologia celular que cubre desde los fundamentos hasta los avances actuales en la investigacion.', 'https://books.google.com.mx/books?id=-48YwHVZSiwC&printsec=frontcover&dq=La+celula&hl=es-419&newbks=1&newbks_redir=0&source=gb_mobile_search&ovdme=1&sa=X&redir_esc=y#v=onepage&q=La%20celula&f=false')">La Celula</div>
+        </div>
+        <div class="shelf" id="shelf3">
+            <div class="book" onclick="showBookInfo('Biologia Molecular de la Celula', 'Bruce Alberts', 'Un libro fundamental sobre biologia celular que abarca una amplia gama de temas de biologia molecular y celular.', 'https://g.co/kgs/VFPyfP')">Biologia Molecular de la Celula</div>
+        </div>
+    </div>
+
+    <div id="bookInfo" style="display: none;">
+        <h2 id="bookTitle"></h2>
+        <p><strong>Autor:</strong> <span id="bookAuthor"></span></p>
+        <p><strong>Descripcion:</strong> <span id="bookDescription"></span></p>
+        <a id="bookLink" class="button" target="_blank">Abrir</a>
+        <button onclick="hideBookInfo()" class="button">Cerrar</button>
+    </div>
+
+    <script>
+        function showBookInfo(title, author, description, link) {
+            document.getElementById('bookTitle').innerText = title;
+            document.getElementById('bookAuthor').innerText = author;
+            document.getElementById('bookDescription').innerText = description;
+            document.getElementById('bookLink').innerText = "Abrir " + title;
+            document.getElementById('bookLink').href = link;
+            document.getElementById('bookInfo').style.display = 'block';
+        }
+
+        function hideBookInfo() {
+            document.getElementById('bookInfo').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
